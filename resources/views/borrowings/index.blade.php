@@ -11,21 +11,28 @@
 
     <section class="list-stack">
         @forelse($borrowings as $borrowing)
-            <article class="list-card">
-                <div>
-                    <h3>{{ $borrowing->game->title }}</h3>
-                    <p>{{ $borrowing->user->pseudo }} &middot; debut {{ $borrowing->borrowed_at->format('d/m/Y') }}</p>
+            <article class="list-card column">
+                <div class="list-head">
+                    <div>
+                        <h3>{{ $borrowing->game->title }}</h3>
+                        <p>{{ $borrowing->user->pseudo }} &middot; debut {{ $borrowing->borrowed_at->format('d/m/Y') }}</p>
+                    </div>
+                    <span class="availability {{ $borrowing->returned_at ? 'soldout' : 'available' }}">
+                        {{ $borrowing->returned_at ? 'Retournee' : 'En cours' }}
+                    </span>
                 </div>
-                <div class="price-block">
-                    <span>{{ $borrowing->returned_at ? 'Retourne le '.$borrowing->returned_at->format('d/m/Y') : 'En cours' }}</span>
-                    @if(!$borrowing->returned_at)
+                @if($borrowing->returned_at)
+                    <p>Retour enregistre le {{ $borrowing->returned_at->format('d/m/Y') }}</p>
+                @else
+                    <div class="card-actions-row">
+                        <span class="muted">Location active</span>
                         <form method="POST" action="{{ route('borrowings.return', $borrowing) }}">
                             @csrf
                             @method('PATCH')
-                            <button class="ghost-button" type="submit">Marquer retourne</button>
+                            <button class="ghost-button" type="submit">Marquer comme retournee</button>
                         </form>
-                    @endif
-                </div>
+                    </div>
+                @endif
             </article>
         @empty
             <p class="empty-state">Aucune location enregistree.</p>

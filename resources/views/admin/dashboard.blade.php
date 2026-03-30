@@ -4,12 +4,12 @@
     <section class="section-head">
         <div>
             <p class="eyebrow">Administration</p>
-            <h1>Pilotage du marketplace</h1>
+            <h1>Tableau de bord</h1>
         </div>
         <a class="ghost-button" href="{{ route('admin.users.index') }}">Gerer les utilisateurs</a>
     </section>
 
-    <section class="stats-grid">
+    <section class="stats-grid admin-stats">
         <article class="stat-card">
             <span>Catalogue</span>
             <strong>{{ $stats['catalogue'] }}</strong>
@@ -32,7 +32,7 @@
         </article>
     </section>
 
-    <section class="dashboard-grid">
+    <section class="dashboard-grid admin-panels">
         <article class="panel">
             <h2>Utilisateurs</h2>
             <ul class="items-list">

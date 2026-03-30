@@ -18,7 +18,7 @@
                     </div>
                     <strong>{{ number_format((float) $order->total_amount, 2, ',', ' ') }} &euro;</strong>
                 </div>
-                <ul class="items-list">
+                <ul class="items-list order-items">
                     @foreach($order->items as $item)
                         <li>{{ $item->game->title }} &middot; x{{ $item->quantity }} &middot; {{ number_format((float) $item->unit_price, 2, ',', ' ') }} &euro;</li>
                     @endforeach

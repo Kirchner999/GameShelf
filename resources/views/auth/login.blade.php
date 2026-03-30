@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form class="form-card compact" method="POST" action="{{ route('login') }}">
+    <form class="form-card compact auth-card" method="POST" action="{{ route('login') }}">
         @csrf
         <div>
             <p class="eyebrow">Connexion</p>

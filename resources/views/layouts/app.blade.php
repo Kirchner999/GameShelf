@@ -8,9 +8,14 @@
 </head>
 <body>
     @php($cartCount = collect(session('cart', []))->sum())
+    <div class="site-backdrop"></div>
+
     <header class="site-header">
         <div class="shell nav-row">
-            <a class="brand" href="{{ route('home') }}">GameShelf</a>
+            <a class="brand" href="{{ route('home') }}">
+                <span class="brand-mark">GS</span>
+                <span>GameShelf</span>
+            </a>
             <nav class="nav-links">
                 <a href="{{ route('games.index') }}">Catalogue</a>
                 <a href="{{ route('cart.index') }}">Panier <span>{{ $cartCount }}</span></a>

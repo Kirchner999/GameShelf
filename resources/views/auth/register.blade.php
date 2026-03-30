@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <form class="form-card compact" method="POST" action="{{ route('register') }}">
+    <form class="form-card compact auth-card" method="POST" action="{{ route('register') }}">
         @csrf
         <div>
             <p class="eyebrow">Inscription</p>
-            <h1>Creer un compte joueur</h1>
+            <h1>Creer un compte</h1>
         </div>
 
         <label>
