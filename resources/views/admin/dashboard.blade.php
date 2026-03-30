@@ -1,0 +1,54 @@
+@extends('layouts.app')
+
+@section('content')
+    <section class="section-head">
+        <div>
+            <p class="eyebrow">Administration</p>
+            <h1>Pilotage du marketplace</h1>
+        </div>
+        <a class="ghost-button" href="{{ route('admin.users.index') }}">Gerer les utilisateurs</a>
+    </section>
+
+    <section class="stats-grid">
+        <article class="stat-card">
+            <span>Catalogue</span>
+            <strong>{{ $stats['catalogue'] }}</strong>
+            <p>Fiches produits actives.</p>
+        </article>
+        <article class="stat-card">
+            <span>Location</span>
+            <strong>{{ $stats['location'] }}</strong>
+            <p>Titres louables.</p>
+        </article>
+        <article class="stat-card">
+            <span>Vente</span>
+            <strong>{{ $stats['vente'] }}</strong>
+            <p>Titres vendables.</p>
+        </article>
+        <article class="stat-card">
+            <span>Stock</span>
+            <strong>{{ $stats['stock'] }}</strong>
+            <p>Unites en base.</p>
+        </article>
+    </section>
+
+    <section class="dashboard-grid">
+        <article class="panel">
+            <h2>Utilisateurs</h2>
+            <ul class="items-list">
+                @foreach($users as $user)
+                    <li>{{ $user->pseudo }} · {{ $user->email }} · {{ $user->role }}</li>
+                @endforeach
+            </ul>
+        </article>
+
+        <article class="panel">
+            <h2>Dernieres commandes</h2>
+            <ul class="items-list">
+                @foreach($orders as $order)
+                    <li>#{{ $order->id }} · {{ $order->user->pseudo }} · {{ number_format((float) $order->total_amount, 2, ',', ' ') }} €</li>
+                @endforeach
+            </ul>
+        </article>
+    </section>
+@endsection
