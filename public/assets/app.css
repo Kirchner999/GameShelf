@@ -531,3 +531,36 @@ h2 {
         padding: 24px;
     }
 }
+.admin-panels {
+    margin-top: 20px;
+}
+
+.admin-stats .stat-card {
+    min-height: 190px;
+}
+
+.home-stats {
+    margin-top: 20px;
+}
+
+.home-stats .stat-card {
+    min-height: 190px;
+}
+
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--muted-strong);
+}
+
+.filter-chip.active {
+    background: linear-gradient(135deg, var(--accent-2), var(--accent));
+    border-color: transparent;
+    color: #08111f;
+}

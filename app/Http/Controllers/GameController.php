@@ -13,15 +13,36 @@ class GameController extends Controller
     public function index(Request $request): View
     {
         $search = trim((string) $request->string('q'));
+        $mode = (string) $request->query('mode', '');
+        $stock = $request->boolean('stock');
 
         $games = Game::query()
             ->withCount('activeBorrowings')
             ->search($search)
+            ->when(in_array($mode, ['vente', 'location'], true), function ($query) use ($mode): void {
+                if ($mode === 'vente') {
+                    $query->whereIn('offer_type', ['vente', 'location_vente']);
+                    return;
+                }
+
+                $query->whereIn('offer_type', ['location', 'location_vente']);
+            })
             ->latest()
             ->paginate(12)
             ->withQueryString();
 
-        return view('games.index', compact('games', 'search'));
+        if ($stock) {
+            $games->setCollection(
+                $games->getCollection()->filter(fn (Game $game): bool => $game->available_stock > 0)->values()
+            );
+        }
+
+        return view('games.index', [
+            'games' => $games,
+            'search' => $search,
+            'activeMode' => $mode,
+            'stockOnly' => $stock,
+        ]);
     }
 
     public function search(Request $request): JsonResponse
@@ -65,7 +86,7 @@ class GameController extends Controller
     {
         Game::create($this->validatedData($request));
 
-        return redirect()->route('games.index')->with('status', 'Jeu ajoute au catalogue.');
+        return redirect()->route('games.index')->with('status', 'Jeu ajouté au catalogue.');
     }
 
     public function edit(Game $game): View
@@ -86,14 +107,14 @@ class GameController extends Controller
 
         $game->update($data);
 
-        return redirect()->route('games.index')->with('status', 'Jeu mis a jour.');
+        return redirect()->route('games.index')->with('status', 'Jeu mis à jour.');
     }
 
     public function destroy(Game $game): RedirectResponse
     {
         $game->delete();
 
-        return redirect()->route('games.index')->with('status', 'Jeu supprime.');
+        return redirect()->route('games.index')->with('status', 'Jeu supprimé.');
     }
 
     private function validatedData(Request $request): array

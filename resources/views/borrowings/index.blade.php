@@ -15,27 +15,27 @@
                 <div class="list-head">
                     <div>
                         <h3>{{ $borrowing->game->title }}</h3>
-                        <p>{{ $borrowing->user->pseudo }} &middot; debut {{ $borrowing->borrowed_at->format('d/m/Y') }}</p>
+                        <p>{{ $borrowing->user->pseudo }} &middot; début {{ $borrowing->borrowed_at->format('d/m/Y') }}</p>
                     </div>
                     <span class="availability {{ $borrowing->returned_at ? 'soldout' : 'available' }}">
-                        {{ $borrowing->returned_at ? 'Retournee' : 'En cours' }}
+                        {{ $borrowing->returned_at ? 'Retournée' : 'En cours' }}
                     </span>
                 </div>
                 @if($borrowing->returned_at)
-                    <p>Retour enregistre le {{ $borrowing->returned_at->format('d/m/Y') }}</p>
+                    <p>Retour enregistré le {{ $borrowing->returned_at->format('d/m/Y') }}</p>
                 @else
                     <div class="card-actions-row">
                         <span class="muted">Location active</span>
                         <form method="POST" action="{{ route('borrowings.return', $borrowing) }}">
                             @csrf
                             @method('PATCH')
-                            <button class="ghost-button" type="submit">Marquer comme retournee</button>
+                            <button class="ghost-button" type="submit">Marquer comme retournée</button>
                         </form>
                     </div>
                 @endif
             </article>
         @empty
-            <p class="empty-state">Aucune location enregistree.</p>
+            <p class="empty-state">Aucune location enregistrée.</p>
         @endforelse
     </section>
 @endsection

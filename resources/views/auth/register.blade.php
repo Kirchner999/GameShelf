@@ -5,7 +5,7 @@
         @csrf
         <div>
             <p class="eyebrow">Inscription</p>
-            <h1>Creer un compte</h1>
+            <h1>Créer un compte</h1>
         </div>
 
         <label>
@@ -28,6 +28,6 @@
             <input type="password" name="password_confirmation" required>
         </label>
 
-        <button class="primary-button" type="submit">Creer le compte</button>
+        <button class="primary-button" type="submit">Créer le compte</button>
     </form>
 @endsection

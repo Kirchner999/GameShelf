@@ -5,7 +5,7 @@
         @csrf
         <div>
             <p class="eyebrow">Nouvelle location</p>
-            <h1>Reserver un jeu</h1>
+            <h1>Réserver un jeu</h1>
             <p class="muted">Limite: 2 locations actives. Vous en avez actuellement {{ $activeBorrowCount }}.</p>
         </div>
 
@@ -14,7 +14,7 @@
             <select name="game_id" @disabled(!$canCreateBorrowing)>
                 @foreach($games as $game)
                     <option value="{{ $game->id }}">
-                        {{ $game->title }} · {{ $game->platform }} · {{ $game->available_stock }} dispo
+                        {{ $game->title }} &middot; {{ $game->platform }} &middot; {{ $game->available_stock }} dispo
                     </option>
                 @endforeach
             </select>

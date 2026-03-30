@@ -69,7 +69,7 @@ class BorrowingController extends Controller
             'borrowed_at' => $data['borrowed_at'],
         ]);
 
-        return redirect()->route('borrowings.index')->with('status', 'Location enregistree.');
+        return redirect()->route('borrowings.index')->with('status', 'Location enregistrée.');
     }
 
     public function markReturned(Request $request, Borrowing $borrowing): RedirectResponse
@@ -85,6 +85,6 @@ class BorrowingController extends Controller
             'returned_at' => now()->toDateString(),
         ]);
 
-        return redirect()->route('borrowings.index')->with('status', 'Retour enregistre.');
+        return redirect()->route('borrowings.index')->with('status', 'Retour enregistré.');
     }
 }

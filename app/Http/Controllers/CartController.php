@@ -37,7 +37,7 @@ class CartController extends Controller
         $cart[$game->id] = min(99, ((int) ($cart[$game->id] ?? 0)) + $quantity);
         $request->session()->put('cart', $cart);
 
-        return redirect()->route('cart.index')->with('status', 'Jeu ajoute au panier.');
+        return redirect()->route('cart.index')->with('status', 'Jeu ajouté au panier.');
     }
 
     public function update(Request $request, Game $game): RedirectResponse
@@ -62,7 +62,7 @@ class CartController extends Controller
         $cart[$game->id] = $quantity;
         $request->session()->put('cart', $cart);
 
-        return redirect()->route('cart.index')->with('status', 'Panier mis a jour.');
+        return redirect()->route('cart.index')->with('status', 'Panier mis à jour.');
     }
 
     public function remove(Request $request, Game $game): RedirectResponse

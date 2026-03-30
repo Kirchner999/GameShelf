@@ -5,7 +5,7 @@
         @csrf
         <div>
             <p class="eyebrow">Connexion</p>
-            <h1>Acceder a votre espace</h1>
+            <h1>Accéder à votre espace</h1>
         </div>
 
         <label>

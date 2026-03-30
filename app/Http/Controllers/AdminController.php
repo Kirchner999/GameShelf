@@ -44,6 +44,6 @@ class AdminController extends Controller
             'role' => $data['role'],
         ]);
 
-        return redirect()->route('admin.users.index')->with('status', 'Role mis a jour.');
+        return redirect()->route('admin.users.index')->with('status', 'Rôle mis à jour.');
     }
 }

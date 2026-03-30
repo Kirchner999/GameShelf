@@ -15,12 +15,18 @@
     <section class="catalog-toolbar">
         <form class="search-bar" method="GET" action="{{ route('games.index') }}">
             <input type="search" name="q" value="{{ $search }}" placeholder="Rechercher par titre">
+            @if($activeMode !== '')
+                <input type="hidden" name="mode" value="{{ $activeMode }}">
+            @endif
+            @if($stockOnly)
+                <input type="hidden" name="stock" value="1">
+            @endif
             <button class="primary-button" type="submit">Rechercher</button>
         </form>
         <div class="catalog-badges">
-            <span>vente</span>
-            <span>location</span>
-            <span>stock</span>
+            <a class="filter-chip {{ $activeMode === 'vente' ? 'active' : '' }}" href="{{ route('games.index', array_filter(['q' => $search, 'mode' => $activeMode === 'vente' ? null : 'vente', 'stock' => $stockOnly ? 1 : null])) }}">vente</a>
+            <a class="filter-chip {{ $activeMode === 'location' ? 'active' : '' }}" href="{{ route('games.index', array_filter(['q' => $search, 'mode' => $activeMode === 'location' ? null : 'location', 'stock' => $stockOnly ? 1 : null])) }}">location</a>
+            <a class="filter-chip {{ $stockOnly ? 'active' : '' }}" href="{{ route('games.index', array_filter(['q' => $search, 'mode' => $activeMode ?: null, 'stock' => $stockOnly ? null : 1])) }}">stock</a>
         </div>
     </section>
 
@@ -71,7 +77,7 @@
                 </div>
             </article>
         @empty
-            <p class="empty-state">Aucun jeu ne correspond a la recherche.</p>
+            <p class="empty-state">Aucun jeu ne correspond à la recherche.</p>
         @endforelse
     </section>
 
@@ -79,9 +85,9 @@
         <nav class="pagination-nav" aria-label="Pagination catalogue">
             <div class="pagination-links">
                 @if($games->onFirstPage())
-                    <span class="pagination-link disabled">Precedent</span>
+                    <span class="pagination-link disabled">Précédent</span>
                 @else
-                    <a class="pagination-link" href="{{ $games->previousPageUrl() }}">Precedent</a>
+                    <a class="pagination-link" href="{{ $games->previousPageUrl() }}">Précédent</a>
                 @endif
 
                 <span class="pagination-current">Page {{ $games->currentPage() }} / {{ $games->lastPage() }}</span>
@@ -92,7 +98,7 @@
                     <span class="pagination-link disabled">Suivant</span>
                 @endif
             </div>
-            <p class="pagination-info">{{ $games->firstItem() }} a {{ $games->lastItem() }} sur {{ $games->total() }} jeux</p>
+            <p class="pagination-info">{{ $games->firstItem() }} à {{ $games->lastItem() }} sur {{ $games->total() }} jeux</p>
         </nav>
     @endif
 @endsection

@@ -6,7 +6,7 @@
             <p class="eyebrow">Administration</p>
             <h1>Tableau de bord</h1>
         </div>
-        <a class="ghost-button" href="{{ route('admin.users.index') }}">Gerer les utilisateurs</a>
+        <a class="ghost-button" href="{{ route('admin.users.index') }}">Gérer les utilisateurs</a>
     </section>
 
     <section class="stats-grid admin-stats">
@@ -28,7 +28,7 @@
         <article class="stat-card">
             <span>Stock</span>
             <strong>{{ $stats['stock'] }}</strong>
-            <p>Unites en base.</p>
+            <p>Unités en base.</p>
         </article>
     </section>
 
@@ -43,7 +43,7 @@
         </article>
 
         <article class="panel">
-            <h2>Dernieres commandes</h2>
+            <h2>Dernières commandes</h2>
             <ul class="items-list">
                 @foreach($orders as $order)
                     <li>#{{ $order->id }} &middot; {{ $order->user->pseudo }} &middot; {{ number_format((float) $order->total_amount, 2, ',', ' ') }} &euro;</li>

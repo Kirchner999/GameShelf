@@ -22,7 +22,7 @@
                         @csrf
                         @method('PATCH')
                         <input type="number" min="0" max="99" name="quantity" value="{{ $item['quantity'] }}">
-                        <button class="ghost-button" type="submit">Mettre a jour</button>
+                        <button class="ghost-button" type="submit">Mettre à jour</button>
                     </form>
                     <div class="price-block">
                         <strong>{{ number_format($item['subtotal'], 2, ',', ' ') }} &euro;</strong>

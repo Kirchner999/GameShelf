@@ -22,7 +22,7 @@
                         <option value="user" @selected($user->role === 'user')>user</option>
                         <option value="admin" @selected($user->role === 'admin')>admin</option>
                     </select>
-                    <button class="ghost-button" type="submit">Mettre a jour</button>
+                    <button class="ghost-button" type="submit">Mettre à jour</button>
                 </form>
             </article>
         @endforeach
