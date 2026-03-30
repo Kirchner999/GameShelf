@@ -24,9 +24,9 @@
                     <span>{{ $game->genre }}</span>
                 </div>
                 <h3>{{ $game->title }}</h3>
-                <p>{{ ucfirst($game->condition) }} · {{ str_replace('_', ' + ', $game->offer_type) }}</p>
+                <p>{{ ucfirst($game->condition) }} &middot; {{ str_replace('_', ' + ', $game->offer_type) }}</p>
                 <div class="game-footer">
-                    <strong>{{ number_format((float) $game->price, 2, ',', ' ') }} €</strong>
+                    <strong>{{ number_format((float) $game->price, 2, ',', ' ') }} &euro;</strong>
                     <span>{{ $game->available_stock }} dispo</span>
                 </div>
                 <div class="actions-stack">

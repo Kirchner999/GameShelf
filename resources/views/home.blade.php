@@ -64,9 +64,9 @@
                     <span>{{ ucfirst(str_replace('_', ' / ', $game->offer_type)) }}</span>
                 </div>
                 <h3>{{ $game->title }}</h3>
-                <p>{{ $game->genre }} · {{ $game->condition }}</p>
+                <p>{{ $game->genre }} &middot; {{ $game->condition }}</p>
                 <div class="game-footer">
-                    <strong>{{ number_format((float) $game->price, 2, ',', ' ') }} €</strong>
+                    <strong>{{ number_format((float) $game->price, 2, ',', ' ') }} &euro;</strong>
                     <span>{{ $game->available_stock }} dispo</span>
                 </div>
             </article>

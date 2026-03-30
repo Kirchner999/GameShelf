@@ -14,7 +14,7 @@
             <article class="list-card">
                 <div>
                     <h3>{{ $borrowing->game->title }}</h3>
-                    <p>{{ $borrowing->user->pseudo }} · debut {{ $borrowing->borrowed_at->format('d/m/Y') }}</p>
+                    <p>{{ $borrowing->user->pseudo }} &middot; debut {{ $borrowing->borrowed_at->format('d/m/Y') }}</p>
                 </div>
                 <div class="price-block">
                     <span>{{ $borrowing->returned_at ? 'Retourne le '.$borrowing->returned_at->format('d/m/Y') : 'En cours' }}</span>

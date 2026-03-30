@@ -14,13 +14,13 @@
                 <div class="list-head">
                     <div>
                         <h3>Commande #{{ $order->id }}</h3>
-                        <p>{{ $order->user->pseudo }} · {{ $order->ordered_at->format('d/m/Y') }} · {{ $order->status }}</p>
+                        <p>{{ $order->user->pseudo }} &middot; {{ $order->ordered_at->format('d/m/Y') }} &middot; {{ $order->status }}</p>
                     </div>
-                    <strong>{{ number_format((float) $order->total_amount, 2, ',', ' ') }} €</strong>
+                    <strong>{{ number_format((float) $order->total_amount, 2, ',', ' ') }} &euro;</strong>
                 </div>
                 <ul class="items-list">
                     @foreach($order->items as $item)
-                        <li>{{ $item->game->title }} · x{{ $item->quantity }} · {{ number_format((float) $item->unit_price, 2, ',', ' ') }} €</li>
+                        <li>{{ $item->game->title }} &middot; x{{ $item->quantity }} &middot; {{ number_format((float) $item->unit_price, 2, ',', ' ') }} &euro;</li>
                     @endforeach
                 </ul>
             </article>

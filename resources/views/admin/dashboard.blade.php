@@ -37,7 +37,7 @@
             <h2>Utilisateurs</h2>
             <ul class="items-list">
                 @foreach($users as $user)
-                    <li>{{ $user->pseudo }} · {{ $user->email }} · {{ $user->role }}</li>
+                    <li>{{ $user->pseudo }} &middot; {{ $user->email }} &middot; {{ $user->role }}</li>
                 @endforeach
             </ul>
         </article>
@@ -46,7 +46,7 @@
             <h2>Dernieres commandes</h2>
             <ul class="items-list">
                 @foreach($orders as $order)
-                    <li>#{{ $order->id }} · {{ $order->user->pseudo }} · {{ number_format((float) $order->total_amount, 2, ',', ' ') }} €</li>
+                    <li>#{{ $order->id }} &middot; {{ $order->user->pseudo }} &middot; {{ number_format((float) $order->total_amount, 2, ',', ' ') }} &euro;</li>
                 @endforeach
             </ul>
         </article>

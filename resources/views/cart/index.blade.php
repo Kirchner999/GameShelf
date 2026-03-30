@@ -16,7 +16,7 @@
                 <article class="list-card">
                     <div>
                         <h3>{{ $item['title'] }}</h3>
-                        <p>{{ $item['platform'] }} · {{ $item['condition'] }} · {{ $item['available_stock'] }} dispo</p>
+                        <p>{{ $item['platform'] }} &middot; {{ $item['condition'] }} &middot; {{ $item['available_stock'] }} dispo</p>
                     </div>
                     <form class="inline-actions" method="POST" action="{{ route('cart.update', $item['id']) }}">
                         @csrf
@@ -25,7 +25,7 @@
                         <button class="ghost-button" type="submit">Mettre a jour</button>
                     </form>
                     <div class="price-block">
-                        <strong>{{ number_format($item['subtotal'], 2, ',', ' ') }} €</strong>
+                        <strong>{{ number_format($item['subtotal'], 2, ',', ' ') }} &euro;</strong>
                         <form method="POST" action="{{ route('cart.remove', $item['id']) }}">
                             @csrf
                             @method('DELETE')
@@ -39,7 +39,7 @@
         <section class="checkout-bar">
             <div>
                 <span>Total</span>
-                <strong>{{ number_format($cartTotal, 2, ',', ' ') }} €</strong>
+                <strong>{{ number_format($cartTotal, 2, ',', ' ') }} &euro;</strong>
             </div>
             @auth
                 <form method="POST" action="{{ route('cart.checkout') }}">

@@ -24,7 +24,7 @@
             </nav>
             <div class="nav-actions">
                 @auth
-                    <span class="pill">{{ auth()->user()->pseudo }} · {{ auth()->user()->role }}</span>
+                    <span class="pill">{{ auth()->user()->pseudo }} &middot; {{ auth()->user()->role }}</span>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button class="ghost-button" type="submit">Deconnexion</button>
